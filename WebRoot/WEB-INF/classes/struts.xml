@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?><!-- XML声明 -->
+<!DOCTYPE struts PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+ "http://struts.apache.org/dtds/struts-2.1.dtd"><!-- 指定Struts 2配置文件的DTD信息 -->
+<struts><!-- 根节点 -->
+	<constant name="struts.i18n.encoding" value="gb2312"></constant>
+	<package name="struts2" extends="struts-default">
+ 		<action name="login" class="com.tecsoon.ims.action.LoginAction">
+ 			<result name="userSuccess" type="redirect">/user/index.jsp</result><!--进入考试页面-->
+ 			<result name="adminSuccess" type="redirect">/admin/index.html</result>
+ 			<result name="input">/login.jsp</result><!--登录失败页面-->
+ 		</action>
+ 		<action name="subjectAdd" class="com.tecsoon.ims.action.SubjectAddAction">
+ 			<result name="success" type="redirect">/admin/subjectAdd.jsp</result><!--重定向到试题添加页面-->
+ 			<result name="input">/admin/subjectAdd.jsp</result><!--请求转发到试题添加页面-->
+ 		</action>
+ 		<action name="subjectQuery" class="com.tecsoon.ims.action.QuerySubjectAction">
+ 			<result name="success">/admin/subjectManage.jsp</result><!--跳转到试题列表管理页面-->
+ 		</action>
+ 		<action name="subjectParticular" class="com.tecsoon.ims.action.SubjectParticularAction">
+ 			<result name="success">/admin/subjectShow.jsp</result><!--跳转到试题详细显示页面-->
+ 		</action>
+ 		<action name="subjectUpadateBefore" class="com.tecsoon.ims.action.SubjectUpdateBefore">
+ 			<result name="success">/admin/subjectUpdate.jsp</result><!--跳转到试题更新页面-->
+ 		</action>
+ 		<action name="subjectUpadate" class="com.tecsoon.ims.action.SubjectUpdateAction">
+ 			<result name="success">/admin/subjectUpdate.jsp</result><!--跳转到试题更新页面-->
+ 		</action>
+ 		<action name="subjectLikeQuery" class="com.tecsoon.ims.action.LikeQuerySubjectAction">
+ 			<result name="success">/admin/subjectManage.jsp</result><!--跳转到试题列表管理页面-->
+ 		</action>
+ 		<action name="getRandomSubject" class="com.tecsoon.ims.action.GetRandomSubject">
+ 			<result name="success">/user/exam.jsp</result><!--跳转到考试页面-->
+ 		</action>
+ 		<action name="submitExam" class="com.tecsoon.ims.action.SubmitExamAction">
+ 			<result name="success">/user/examResult.jsp</result><!--跳转到考试页面-->
+ 		</action>
+ 		<action name="showSubjectAnswer" class="com.tecsoon.ims.action.ShowSubjectAnswer">
+ 			<result name="success">/user/showAnswer.jsp</result><!--跳转到考试页面-->
+ 		</action>
+ 		<action name="queryUserByName" class="com.tecsoon.ims.action.QueryUserByName">
+ 			<result name="success">/admin/userManage.jsp</result><!--跳转到用户管理页面-->
+ 		</action>
+ 		<action name="queryUserByClass" class="com.tecsoon.ims.action.QueryUserByClass">
+ 			<result name="success">/admin/userManage.jsp</result><!--跳转到用户管理页面-->
+ 		</action>
+ 		<action name="cvAdd" class="com.tecsoon.ims.action.CvAddAction">
+ 			<result name="success" type="chain">getRandomSubject</result><!--重定向到试题添加页面-->
+ 			<result name="input">/index.html</result><!--请求转发到用户信息添加页面-->
+ 		</action>
+ 		<action name="userSave" class="com.tecsoon.ims.action.UserAddAction">
+ 			<result name="success" type="chain">userQuery</result><!--重定向到用户添加页面-->
+ 			<result name="input">/user/userRegister.jsp</result><!--请求转发到用户添加页面-->
+ 		</action>
+ 		<action name="userQuery" class="com.tecsoon.ims.action.QueryUserAction">
+ 			<result name="success">/admin/user.jsp</result><!--跳转到试题列表管理页面-->
+ 		</action>
+ 		<action name="userDelete" class="com.tecsoon.ims.action.UserDeleteAction">
+ 			<result name="success" type="chain">userAll</result><!--跳转到试题列表管理页面-->
+ 		</action>
+ 		<action name="userAll" class="com.tecsoon.ims.action.UserDeleteAction" method="all">
+ 			<result name="success">/admin/userDelete.jsp</result><!--跳转到试题列表管理页面-->
+ 		</action>
+ 		<action name="subjectDelete" class="com.tecsoon.ims.action.SubjectDeleteAction">
+ 			<result name="success" type="chain">subjectAll</result><!--跳转到试题列表管理页面-->
+ 		</action>
+ 		<action name="subjectAll" class="com.tecsoon.ims.action.SubjectDeleteAction" method="all">
+ 			<result name="success">/admin/subjectDelete.jsp</result><!--跳转到试题列表管理页面-->
+ 		</action>
+ 	</package>	
+</struts>
